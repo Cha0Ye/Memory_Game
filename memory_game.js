@@ -88,6 +88,7 @@ function startGame() {
         checkForMatch();
     }
 
+    //check for match on two flipped cards
     function checkForMatch() {
     
         if (firstCard.dataset.framework === secondCard.dataset.framework) {
@@ -99,12 +100,14 @@ function startGame() {
         }
     }
 
+    //function to disable cards and leave it flipped    
     function disableCards() {
         firstCard.removeEventListener('click', flipCard);
         secondCard.removeEventListener('click', flipCard);
         resetBoard();
     }
 
+    //function to unflip cards if it cards do not match
     function unflipCards() {
         lockBoard = true;
         setTimeout(() => {
@@ -115,13 +118,13 @@ function startGame() {
     }
 
 
-
+    //function to reset board
     function resetBoard() {
         [hasFlippedCard, lockBoard] = [false, false];
         [firstCard, secondCard] = [null,null];
     }
 
-
+    //function to shuffle cards when a new game is started
     function shuffle(shuffledImageNames,cardImageObject) {
 
         //shuffles the imageName array to append to data-framwork,source of image, and alt
@@ -134,6 +137,7 @@ function startGame() {
     }
 };
 
+//function to unflip cards when newgame button is pressed
 function resetUnflip(){
     var allFlippedCards = document.querySelectorAll(".flip");
     for(let i = 0; i < allFlippedCards.length; i++){
